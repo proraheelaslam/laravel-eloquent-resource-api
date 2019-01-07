@@ -19,4 +19,5 @@ Route::post('login','Api\PassportController@login');
 
 Route::group(['middleware'=>'auth:api'],function () {
     Route::post('user/detail','Api\PassportController@geUserDetail');
+    Route::get('user/map','Api\ApiController@index');
 });

@@ -43,5 +43,15 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Role::class,'role_user','user_id','role_id'); // optional param
     }
+    public function store()
+    {
+        return $this->belongsTo(Store::class,'store_id');
+    }
 
+    public function getFullPathAttribute($value)
+    {
+        $imgPath = 'no_file';
+
+        return ($this->store_id == "5c32f43ac79ee315c8a70fa5" ? 'store_exist' : 'store_not_exist');
+    }
 }
