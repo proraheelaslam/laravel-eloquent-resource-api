@@ -1,0 +1,1047 @@
+-- phpMyAdmin SQL Dump
+-- version 4.9.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Mar 24, 2020 at 01:55 PM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.2.24
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `ilearning`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admins`
+--
+
+CREATE TABLE `admins` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `admins`
+--
+
+INSERT INTO `admins` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'maria sharif', 'admin@gmail.com', '$2y$10$avUJCPWoIH.Kl6CDJL1O../VN6l0Qr/VuUdpkJilxCouWk0cshdDS', 'iEzdaiUmYC84il6autq9lHYhP9GdADCuVYAuwuABOnr0uuBx6PoRbl25eeuy', '2019-11-27 19:00:00', '2019-11-28 07:46:28');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin_password_resets`
+--
+
+CREATE TABLE `admin_password_resets` (
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `parent_id` int(11) NOT NULL DEFAULT 0,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name_ru` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name_iw` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name_el` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `category_key` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `parent_id`, `name`, `name_ru`, `name_iw`, `name_el`, `category_key`, `image`, `created_at`, `updated_at`) VALUES
+(4, 0, 'ww', 'ss', 'ss', 'ss', 'ww', '', '2019-12-04 07:16:44', '2019-12-04 07:20:58'),
+(5, 0, 'new cat', 'new cat', 'new cat', 'new cat', 'new-cat', 'PQl7bP40BpMg.jpg', '2019-12-05 12:04:52', '2019-12-05 12:04:52'),
+(6, 5, 'name en', 'grade a rus', 'grade a heb', 'grade a gre', 'name-en', 'grPJ3fhKH49h.png', '2020-03-19 06:59:30', '2020-03-19 07:29:08'),
+(7, 4, 'Sara', 'grade a rus', 'grade a heb', 'grade a gre', 'sara', 'qh4PaxW2x33y.png', '2020-03-19 08:04:27', '2020-03-19 08:11:36'),
+(8, 5, 'sarah fhgh', 'grade a rus', 'grade a heb', 'grade a gre', 'sarah-fhgh', 'DIZahRMhAjyl.png', '2020-03-19 08:06:00', '2020-03-19 08:06:00'),
+(9, 5, 'Sarah Tester', 'grade a rus', 'grade a heb', 'grade a gre', 'sarah-tester', 'hkujnh8pSimN.png', '2020-03-19 08:09:21', '2020-03-19 08:09:21'),
+(10, 4, 'gdfgfdgfdgh Tester', 'grade a rus', 'grade a heb', 'grade a gre', 'gdfgfdgfdgh-tester', 'mASornkefp5X.png', '2020-03-19 08:18:45', '2020-03-19 08:20:28');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `classes`
+--
+
+CREATE TABLE `classes` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name_ru` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name_iw` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name_el` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `class_key` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `class_code` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `classes`
+--
+
+INSERT INTO `classes` (`id`, `name`, `name_ru`, `name_iw`, `name_el`, `class_key`, `class_code`, `image`, `description`, `created_at`, `updated_at`) VALUES
+(1, 'Class 1', 'class ru', 'class hr', 'class gr', 'class-1', 'class102', NULL, NULL, '2019-11-29 00:01:46', '2019-11-29 00:02:48'),
+(2, 'Class2', 'Class2', 'Class2', 'Class2', 'class2', 'Class2', NULL, NULL, '2019-11-29 07:16:11', '2019-11-29 07:16:11');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `content_pages`
+--
+
+CREATE TABLE `content_pages` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name_ru` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name_iw` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name_el` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content_ru` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content_iw` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content_el` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_title_ru` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_title_iw` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_title_el` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `meta_description_ru` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_description_iw` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_description_el` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_keywords` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `meta_keywords_ru` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_keywords_iw` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_keywords_el` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `key` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `lang_key` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `courses`
+--
+
+CREATE TABLE `courses` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(10) NOT NULL DEFAULT 0,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `short_desc` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `course_key` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `category_id` bigint(20) UNSIGNED NOT NULL,
+  `sub_category_id` bigint(20) NOT NULL,
+  `school_id` bigint(20) UNSIGNED NOT NULL,
+  `grade_id` bigint(20) UNSIGNED NOT NULL,
+  `class_id` bigint(20) UNSIGNED NOT NULL,
+  `image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `course_code` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `course_price` decimal(10,2) DEFAULT NULL,
+  `course_includes` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `course_requirement` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `courses`
+--
+
+INSERT INTO `courses` (`id`, `user_id`, `name`, `short_desc`, `course_key`, `category_id`, `sub_category_id`, `school_id`, `grade_id`, `class_id`, `image`, `course_code`, `course_price`, `course_includes`, `course_requirement`, `description`, `created_at`, `updated_at`) VALUES
+(1, 0, 'Maths', 'short descccc', 'maths', 4, 7, 1, 2, 1, NULL, 'Cs102', '100.00', 'it Includes', 'its Requirments', 'its Description', '2019-11-28 19:00:00', '2020-03-16 08:03:18'),
+(2, 0, 'Science', 'short descccc  ccc', 'science', 5, 6, 1, 2, 1, NULL, 'Cs103', '345.00', 'it Includes cc', 'its Requirments xxx', 'its Description', '2019-11-28 19:00:00', '2019-11-29 07:16:47'),
+(3, 0, 'English', 'short descccc', 'english', 5, 8, 1, 2, 1, NULL, 'Cs104', '44.00', 'it Includes', 'its Requirments', 'its Description', '2019-11-28 19:00:00', '2019-11-29 07:16:56'),
+(4, 0, 'History', 'short descccc', 'history', 5, 9, 1, 2, 1, NULL, 'Cs105', '66.00', 'it Includes', 'its Requirments', 'its Description', '2019-11-28 19:00:00', '2019-11-29 07:17:07');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `course_content`
+--
+
+CREATE TABLE `course_content` (
+  `id` int(11) NOT NULL,
+  `course_id` int(11) NOT NULL,
+  `content_title` varchar(255) NOT NULL,
+  `content_desc` text DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `course_content`
+--
+
+INSERT INTO `course_content` (`id`, `course_id`, `content_title`, `content_desc`, `created_at`, `updated_at`) VALUES
+(1, 1, 'test', 'ss', '2019-12-03 06:12:29', '2019-12-03 06:12:29'),
+(2, 1, 'fff ss ddd', 'fffssss', '2019-12-03 06:18:19', '2019-12-03 07:59:50'),
+(3, 4, 'sss', 'ssss', '2019-12-03 08:34:43', '2019-12-03 08:34:43');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `course_content_lectures`
+--
+
+CREATE TABLE `course_content_lectures` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `course_id` int(11) NOT NULL,
+  `short_desc` text DEFAULT NULL,
+  `course_content_id` int(11) NOT NULL,
+  `file_type` set('video','file','image') NOT NULL,
+  `file_name` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `course_content_lectures`
+--
+
+INSERT INTO `course_content_lectures` (`id`, `title`, `course_id`, `short_desc`, `course_content_id`, `file_type`, `file_name`, `created_at`, `updated_at`) VALUES
+(1, 'ss', 1, 'ddd', 1, 'image', 'Zq35qenuiSy8.png', '2019-12-03 12:05:42', '2019-12-03 12:05:42'),
+(2, 'sdssd', 1, 'dddd', 1, 'image', '4d5lW7gEoKIp.png', '2019-12-03 12:07:20', '2019-12-03 12:07:20');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `emails`
+--
+
+CREATE TABLE `emails` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `subject` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `key` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `emails`
+--
+
+INSERT INTO `emails` (`id`, `name`, `subject`, `key`, `content`, `created_at`, `updated_at`) VALUES
+(1, 'Admin Forget Password', 'Admin Forget Password', 'admin_forget_password', '<p>hi Admin click here {here}&nbsp;to update your password Regards</p>', '2019-08-21 19:00:00', '2020-03-23 01:19:45'),
+(2, 'Forgot Password', 'Forgot Password', 'forget_password', '<p>Hi, It is inform to you that we have received forget password request from your account.</p>\r\n\r\n<p>Here is your link to reset your password</p>\r\n\r\n<p>{link}</p>\r\n\r\n<p>Regards: iLearning</p>', '2019-08-21 19:00:00', '2020-03-23 01:20:09'),
+(3, 'Register User', 'Register User', 'user_register', '<p>Hi, Welcome to iLearning as {user_type}.</p>\r\n\r\n<p>To enjoy services Please click following link</p>\r\n\r\n<p>{link}</p>\r\n\r\n<p>Regards: iLearning</p>', '2019-08-21 19:00:00', '2020-03-23 01:20:09');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `faqs`
+--
+
+CREATE TABLE `faqs` (
+  `id` bigint(20) NOT NULL,
+  `type_id` bigint(20) NOT NULL,
+  `question` varchar(250) NOT NULL,
+  `answer` text NOT NULL,
+  `user_id` bigint(20) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `faqs`
+--
+
+INSERT INTO `faqs` (`id`, `type_id`, `question`, `answer`, `user_id`, `created_at`, `updated_at`) VALUES
+(4, 1, 'What is Lorem Ipsum?', '<h2 style=\"line-height: 24px; margin: 0px 0px 10px; padding: 0px; font-family: DauphinPlain; font-size: 24px; color: rgb(0, 0, 0);\">What is Lorem Ipsum?</h2>\r\n\r\n<p font-size:=\"\" open=\"\" style=\"margin: 0px 0px 15px; padding: 0px; text-align: justify; color: rgb(0, 0, 0); font-family: \"><strong style=\"margin: 0px; padding: 0px;\">Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>', 1, '2020-03-18 08:00:23', '2020-03-19 02:33:31'),
+(5, 4, 'fsf', '<p>fsdfdsfdsf</p>', 1, '2020-03-19 02:32:14', '2020-03-19 02:34:12');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `faq_types`
+--
+
+CREATE TABLE `faq_types` (
+  `id` bigint(20) NOT NULL,
+  `type_en` varchar(250) NOT NULL,
+  `type_iw` varchar(250) NOT NULL,
+  `type_ru` varchar(250) NOT NULL,
+  `type_el` varchar(250) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `faq_types`
+--
+
+INSERT INTO `faq_types` (`id`, `type_en`, `type_iw`, `type_ru`, `type_el`, `created_at`, `updated_at`) VALUES
+(1, 'Type EN', 'Type IW', 'Type RU', 'type EL', '2020-03-19 02:02:07', '2020-03-19 02:02:07'),
+(4, 'Type EN ergfegrfdgfdg', 'Type IW', 'Type RU', 'sdcsc', '2020-03-19 02:33:57', '2020-03-19 02:33:57');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `grades`
+--
+
+CREATE TABLE `grades` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name_ru` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name_iw` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name_el` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `grade_key` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `grades`
+--
+
+INSERT INTO `grades` (`id`, `name`, `name_ru`, `name_iw`, `name_el`, `grade_key`, `image`, `description`, `created_at`, `updated_at`) VALUES
+(2, 'Nursery', 'nur', 'nu hr', 'num gree', 'nursery', NULL, NULL, '2019-11-28 08:09:51', '2019-11-28 08:09:51'),
+(3, 'ss', 'ss', 'ss', 'ss', 'ss', NULL, NULL, '2019-12-05 12:03:52', '2019-12-05 12:03:52');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `inbox`
+--
+
+CREATE TABLE `inbox` (
+  `id` bigint(20) NOT NULL,
+  `from_id` int(10) NOT NULL,
+  `to_id` int(10) NOT NULL,
+  `message` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `is_send` int(1) NOT NULL DEFAULT 0 COMMENT '0 for no 1 for yes',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `languages`
+--
+
+CREATE TABLE `languages` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `key` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_resets_table', 1),
+(3, '2019_11_18_103111_create_admins_table', 2),
+(4, '2019_11_18_103112_create_admin_password_resets_table', 2),
+(5, '2019_11_18_103131_create_students_table', 2),
+(6, '2019_11_18_103132_create_student_password_resets_table', 2),
+(7, '2019_11_18_103141_create_schools_table', 2),
+(8, '2019_11_18_103142_create_school_password_resets_table', 2),
+(9, '2019_11_18_103549_create_categories_table', 3),
+(10, '2019_11_18_103720_create_classes_table', 3),
+(11, '2019_11_18_103740_create_grades_table', 3),
+(12, '2019_11_18_103811_create_courses_table', 3),
+(13, '2019_11_18_103832_create_user_course_table', 3),
+(14, '2019_11_18_103848_create_school_subscription_table', 3),
+(15, '2019_11_18_103903_create_pages_table', 3),
+(16, '2019_11_18_103914_create_emails_table', 3),
+(17, '2019_11_18_103934_create_orders_table', 3),
+(18, '2019_11_18_104000_create_subscription_table', 3),
+(19, '2019_11_18_104502_create_language_table', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `news_letters`
+--
+
+CREATE TABLE `news_letters` (
+  `id` bigint(20) NOT NULL,
+  `email` varchar(250) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `course_id` int(11) NOT NULL DEFAULT 0,
+  `student_id` int(11) NOT NULL DEFAULT 0,
+  `school_id` int(11) NOT NULL DEFAULT 0,
+  `order_status` enum('Pending','Completed','Cancelled','Inprocess') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Pending',
+  `order_date` datetime DEFAULT NULL,
+  `order_total` decimal(10,2) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `course_id`, `student_id`, `school_id`, `order_status`, `order_date`, `order_total`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 1, 'Pending', '2019-12-04 00:00:00', '100.00', '2019-08-21 19:00:00', '2019-12-04 05:07:32');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `password_resets`
+--
+
+CREATE TABLE `password_resets` (
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reviews`
+--
+
+CREATE TABLE `reviews` (
+  `id` bigint(20) NOT NULL,
+  `from_id` int(10) NOT NULL,
+  `to_id` int(10) NOT NULL,
+  `reviews` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `schools`
+--
+
+CREATE TABLE `schools` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `school_key` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `website` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `year_since` int(11) DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `is_active` tinyint(4) NOT NULL DEFAULT 0,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mission_statment` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `schools`
+--
+
+INSERT INTO `schools` (`id`, `name`, `school_key`, `email`, `password`, `website`, `year_since`, `phone`, `address`, `is_active`, `image`, `description`, `mission_statment`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Government High Schools', 'high_school', 'maria.sadeeq@elementarylogics.com', '$2y$10$lETfUH9Xut6oOjMhfDXwpu90o75N3qEsFkTYGKfU0HJLVWUBz3wXC', 'www.google.com', 22222222, '21312121545', 'this is my adress', 1, 'Eq5LkAtf6DEO.png', 'sss', 'sss', NULL, '2019-11-27 19:00:00', '2020-03-23 01:40:28');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `school_password_resets`
+--
+
+CREATE TABLE `school_password_resets` (
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `school_password_resets`
+--
+
+INSERT INTO `school_password_resets` (`email`, `token`, `created_at`) VALUES
+('maria.sadeeq@elementarylogics.com', 'vCTs8mFtkrYxlWizxA6N2RGJzDe6Xo', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `school_subscription`
+--
+
+CREATE TABLE `school_subscription` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `settings`
+--
+
+CREATE TABLE `settings` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `key` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `value` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `settings`
+--
+
+INSERT INTO `settings` (`id`, `key`, `value`, `created_at`, `updated_at`) VALUES
+(1, 'title', 'iLearning', NULL, NULL),
+(2, 'user_currency', '$', NULL, NULL),
+(3, 'highlight_fee', '2', NULL, NULL),
+(4, 'toplisting_fee', '5', NULL, NULL),
+(5, 'email_from_name', 'iLearning Team', NULL, NULL),
+(6, 'email_from', 'ilearning@yahoo.com', NULL, NULL),
+(7, 'meta_title', 'iLearning', NULL, NULL),
+(8, 'meta_desc', 'iLearning description', NULL, NULL),
+(9, 'meta_keywords', 'iLearning,Tour,locations', NULL, NULL),
+(10, 'copy_rights', 'Regards, I-Learning', NULL, NULL),
+(11, 'footer_text', 'Regards, I-Learning', NULL, NULL),
+(12, 'fb_url', 'http://www.facebook.com', NULL, NULL),
+(13, 'twitter_url', 'http://www.facebook.com', NULL, NULL),
+(14, 'insta_url', 'http://www.facebook.com', NULL, NULL),
+(15, 'apple_url', 'http://www.facebook.com', NULL, NULL),
+(16, 'play_store_url', 'http://www.facebook.com', NULL, NULL),
+(17, 'copy_right', 'Copyright i-Learning © 2020. All Rights Reserved', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `students`
+--
+
+CREATE TABLE `students` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `is_active` tinyint(4) NOT NULL DEFAULT 0,
+  `first_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `dob` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `father_full_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `gender` enum('male','female') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `age` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `random_student_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `roll_number` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `school_id` int(11) NOT NULL DEFAULT 0,
+  `class_id` int(11) NOT NULL DEFAULT 0,
+  `grade_id` int(11) NOT NULL DEFAULT 0,
+  `about_student` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `registration_number` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `registartion_date` datetime DEFAULT NULL,
+  `is_instructor` int(1) NOT NULL DEFAULT 0 COMMENT '0 for student 1 for instructor',
+  `is_online` int(1) NOT NULL DEFAULT 0 COMMENT '0 for no 1 for yes',
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `students`
+--
+
+INSERT INTO `students` (`id`, `name`, `email`, `password`, `is_active`, `first_name`, `last_name`, `dob`, `address`, `phone`, `father_full_name`, `gender`, `image`, `age`, `random_student_id`, `roll_number`, `school_id`, `class_id`, `grade_id`, `about_student`, `registration_number`, `registartion_date`, `is_instructor`, `is_online`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Ali', 'maria.sadeeq@elementarylogics.coms', '$2y$10$/qvJiUL967WQ7R2epMEe/OOxBGxH7BShyu26kU4AurGilRpqm9j/2', 1, 'Ali', 'ali', '15-11-1989', 'Lahore, Pakistan', '111111', 'Sharif Khan khan', 'female', '', '30', '1-student1', '1', 1, 1, 2, 'about me', '1', '2019-11-13 00:00:00', 0, 0, NULL, '2019-11-28 19:00:00', '2020-03-23 05:44:35'),
+(2, 'Ali', 'maria.sharif2@elementarylogics.com', '$2y$10$HPmz9.IeoqSYVys1Xw35peiJ2DxIY0OqBgQNda7mZoyZS7srd2CHu', 1, 'Ali', 'muhammad', '15-11-2019', 'ssdssd fff', '222323232', 'Sharif Khan', 'male', 'N9TCW8PQX66Z.png', '23', 'sdsd44', '123', 1, 1, 2, 'aaa', '1233', '2019-11-19 00:00:00', 0, 0, NULL, '2019-11-28 19:00:00', '2020-03-22 23:42:12'),
+(3, 'Ali', 'maria.sharif3@elementarylogics.com', '$2y$10$.rq7QW8P.t6UA9Kc6d7FKexiJYTlkHHodC.L8q8t2YVhwS7v1KYP2', 1, 'Ali', 'hassan', '15-11-2019', 'ssdssd fff', '222323232', 'Sharif Khan', 'male', NULL, '23', 'sdsd44', '123', 1, 1, 1, 'aaa', '1233', '2019-11-19 00:00:00', 0, 0, NULL, '2019-11-28 19:00:00', '2020-03-16 08:00:01'),
+(18, 'maria', 'maria.sadeeq@elementarylogics.com', '$2y$10$rjl56k.Y5mDrok0fzV.5SO5nK21v4zEcPMCmdISyCx045aiyt1Va.', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, NULL, NULL, NULL, 1, 1, NULL, '2020-03-24 02:30:44', '2020-03-24 06:56:13');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student_password_resets`
+--
+
+CREATE TABLE `student_password_resets` (
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `student_password_resets`
+--
+
+INSERT INTO `student_password_resets` (`email`, `token`, `created_at`) VALUES
+('maria.sadeeq@elementarylogics.com', 'CKxSJStMcaTZeyiu5PBfAOZvXuaksn', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subscription`
+--
+
+CREATE TABLE `subscription` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subscription_plans`
+--
+
+CREATE TABLE `subscription_plans` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `duration` int(11) NOT NULL COMMENT 'days',
+  `detail` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fee` decimal(10,2) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_course`
+--
+
+CREATE TABLE `user_course` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `course_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `user_course`
+--
+
+INSERT INTO `user_course` (`id`, `course_id`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, '2019-08-21 19:00:00', '2019-08-22 19:00:00'),
+(2, 1, 2, '2019-08-21 19:00:00', '2019-08-22 19:00:00');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admins`
+--
+ALTER TABLE `admins`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `admins_email_unique` (`email`);
+
+--
+-- Indexes for table `admin_password_resets`
+--
+ALTER TABLE `admin_password_resets`
+  ADD KEY `admin_password_resets_email_index` (`email`),
+  ADD KEY `admin_password_resets_token_index` (`token`);
+
+--
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `classes`
+--
+ALTER TABLE `classes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `content_pages`
+--
+ALTER TABLE `content_pages`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `courses`
+--
+ALTER TABLE `courses`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `course_content`
+--
+ALTER TABLE `course_content`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `course_content_lectures`
+--
+ALTER TABLE `course_content_lectures`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `emails`
+--
+ALTER TABLE `emails`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `faqs`
+--
+ALTER TABLE `faqs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `faq_types`
+--
+ALTER TABLE `faq_types`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `grades`
+--
+ALTER TABLE `grades`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `inbox`
+--
+ALTER TABLE `inbox`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `languages`
+--
+ALTER TABLE `languages`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `news_letters`
+--
+ALTER TABLE `news_letters`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indexes for table `reviews`
+--
+ALTER TABLE `reviews`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `schools`
+--
+ALTER TABLE `schools`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `schools_email_unique` (`email`);
+
+--
+-- Indexes for table `school_password_resets`
+--
+ALTER TABLE `school_password_resets`
+  ADD KEY `school_password_resets_email_index` (`email`),
+  ADD KEY `school_password_resets_token_index` (`token`);
+
+--
+-- Indexes for table `school_subscription`
+--
+ALTER TABLE `school_subscription`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `settings`
+--
+ALTER TABLE `settings`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `students`
+--
+ALTER TABLE `students`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `students_email_unique` (`email`);
+
+--
+-- Indexes for table `student_password_resets`
+--
+ALTER TABLE `student_password_resets`
+  ADD KEY `student_password_resets_email_index` (`email`),
+  ADD KEY `student_password_resets_token_index` (`token`);
+
+--
+-- Indexes for table `subscription`
+--
+ALTER TABLE `subscription`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `subscription_plans`
+--
+ALTER TABLE `subscription_plans`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
+
+--
+-- Indexes for table `user_course`
+--
+ALTER TABLE `user_course`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `admins`
+--
+ALTER TABLE `admins`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT for table `classes`
+--
+ALTER TABLE `classes`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `content_pages`
+--
+ALTER TABLE `content_pages`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `courses`
+--
+ALTER TABLE `courses`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `course_content`
+--
+ALTER TABLE `course_content`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `course_content_lectures`
+--
+ALTER TABLE `course_content_lectures`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `emails`
+--
+ALTER TABLE `emails`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `faqs`
+--
+ALTER TABLE `faqs`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `faq_types`
+--
+ALTER TABLE `faq_types`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `grades`
+--
+ALTER TABLE `grades`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `inbox`
+--
+ALTER TABLE `inbox`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `languages`
+--
+ALTER TABLE `languages`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT for table `news_letters`
+--
+ALTER TABLE `news_letters`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `reviews`
+--
+ALTER TABLE `reviews`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `schools`
+--
+ALTER TABLE `schools`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `school_subscription`
+--
+ALTER TABLE `school_subscription`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `settings`
+--
+ALTER TABLE `settings`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `students`
+--
+ALTER TABLE `students`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT for table `subscription`
+--
+ALTER TABLE `subscription`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `subscription_plans`
+--
+ALTER TABLE `subscription_plans`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `user_course`
+--
+ALTER TABLE `user_course`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
